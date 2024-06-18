@@ -16,10 +16,10 @@ import com.example.moviecompose.data.Movie
 import com.example.moviecompose.theme.MovieComposeTheme
 
 @Composable
-fun PopularMovie(movies: List<Movie>, onClick: () -> Unit) {
+fun HorizontalPortraitMovies(title: String, movies: List<Movie>, onClick: () -> Unit) {
     Column {
         Text(
-            text = "Trending",
+            text = title,
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(start = 16.dp)
         )
@@ -41,7 +41,8 @@ fun PopularMovie(movies: List<Movie>, onClick: () -> Unit) {
 @Composable
 fun PopularMovie() {
     MovieComposeTheme() {
-        PopularMovie(
+        HorizontalPortraitMovies(
+            "Trending",
             listOf(
                 Movie(""),
                 Movie(""),
