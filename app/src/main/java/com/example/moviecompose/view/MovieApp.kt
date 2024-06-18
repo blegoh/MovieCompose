@@ -23,9 +23,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.moviecompose.R
+import com.example.moviecompose.data.Movie
 
 enum class MovieScreen(val title: String) {
-    Home("home"), Detail("detail")
+    Home("home"), Detail("detail"), Watchlist("watchlist")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,6 +40,7 @@ fun MovieApp(
         navController.addOnDestinationChangedListener { _, destination, _ ->
             topBarVisible.value = when (destination.route) {
                 MovieScreen.Home.name -> true
+                MovieScreen.Watchlist.name -> true
                 else -> false
             }
         }
@@ -60,7 +62,14 @@ fun MovieApp(
                                 Image(painter = painterResource(item), contentDescription = "")
                             },
                             selected = selectedItem == index,
-                            onClick = { selectedItem = index }
+                            onClick = {
+                                selectedItem = index
+                                when (selectedItem) {
+                                    0 -> navController.navigate(MovieScreen.Home.name)
+                                    1 -> navController.navigate(MovieScreen.Watchlist.name)
+                                    else -> navController.navigate(MovieScreen.Home.name)
+                                }
+                            }
                         )
                     }
                 }
@@ -79,6 +88,18 @@ fun MovieApp(
             }
             composable(route = MovieScreen.Detail.name) {
                 MovieDetail()
+            }
+            composable(route = MovieScreen.Watchlist.name) {
+                Watchlist(
+                    listOf(
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
+                    ),
+                    onClick = {
+
+                    }
+                )
             }
         }
     }

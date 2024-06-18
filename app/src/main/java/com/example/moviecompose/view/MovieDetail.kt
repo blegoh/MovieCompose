@@ -85,49 +85,12 @@ fun MovieDetail() {
             text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             modifier = Modifier.padding(horizontal = 16.dp)
         )
-        Row(
-            Modifier
-                .padding(top = 8.dp)
+        MovieGenre(
+            listOf("Action", "Comedy", "Adventure"),
+            modifier = Modifier
                 .padding(horizontal = 16.dp)
-        ) {
-            FilterChip(onClick = {}, label = {
-                Text("Action")
-            }, leadingIcon = null, selected = true,
-                colors = FilterChipDefaults.filterChipColors(
-                    selectedContainerColor = GenreBg,
-                    selectedLabelColor = GenreText
-                ),
-                shape = RoundedCornerShape(20.dp)
-            )
-            FilterChip(
-                onClick = {},
-                label = {
-                    Text("Action")
-                },
-                leadingIcon = null,
-                colors = FilterChipDefaults.filterChipColors(
-                    selectedContainerColor = GenreBg,
-                    selectedLabelColor = GenreText
-                ),
-                selected = true,
-                shape = RoundedCornerShape(20.dp),
-                modifier = Modifier.padding(start = 4.dp)
-            )
-            FilterChip(
-                onClick = {},
-                label = {
-                    Text("Action")
-                },
-                leadingIcon = null,
-                selected = true,
-                colors = FilterChipDefaults.filterChipColors(
-                    selectedContainerColor = GenreBg,
-                    selectedLabelColor = GenreText
-                ),
-                modifier = Modifier.padding(start = 4.dp),
-                shape = RoundedCornerShape(20.dp)
-            )
-        }
+                .padding(top = 8.dp)
+        )
         ConstraintLayout(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
