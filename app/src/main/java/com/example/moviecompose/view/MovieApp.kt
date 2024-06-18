@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.moviecompose.R
 import com.example.moviecompose.data.Movie
@@ -35,6 +36,10 @@ fun MovieApp(
     navController: NavHostController = rememberNavController()
 ) {
     val topBarVisible = remember { mutableStateOf(true) }
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = MovieScreen.valueOf(
+        backStackEntry?.destination?.route ?: MovieScreen.Home.name
+    )
 
     LaunchedEffect(navController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->

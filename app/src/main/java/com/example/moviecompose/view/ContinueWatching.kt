@@ -1,6 +1,5 @@
 package com.example.moviecompose.view
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.moviecompose.data.Movie
 import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.view.items.MovieCardLandscape
 
 @Composable
 fun ContinueWatching(movies: List<Movie>) {

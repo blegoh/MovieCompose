@@ -1,4 +1,4 @@
-package com.example.moviecompose.view
+package com.example.moviecompose.view.items
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -24,14 +24,15 @@ import com.example.moviecompose.R
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.view.MovieGenre
 
 @Composable
-fun WatchlistItem() {
+fun WatchlistItem(onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .height(134.dp)
             .padding(horizontal = 16.dp)
-            .padding(bottom = 8.dp)
+            .padding(bottom = 8.dp),
     ) {
         AsyncImage(
             model = "https://image.tmdb.org/t/p/original/nLBRD7UPR6GjmWQp6ASAfCTaWKX.jpg",
@@ -81,7 +82,7 @@ fun WatchlistItem() {
 @Preview()
 @Composable
 fun PreviewMovieWatchlist() {
-    MovieComposeTheme() {
-        WatchlistItem()
+    MovieComposeTheme {
+        WatchlistItem {}
     }
 }
