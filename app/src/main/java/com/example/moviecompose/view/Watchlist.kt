@@ -16,7 +16,7 @@ fun Watchlist(movies: List<Movie>, onClick: () -> Unit) {
         )
     ) {
         items(movies) { movie ->
-            WatchlistItem {}
+            WatchlistItem(onClick)
         }
     }
 }
