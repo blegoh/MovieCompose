@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import com.example.moviecompose.data.Movie
 
 @Composable
-fun Home() {
+fun Home(onClick: () -> Unit) {
     Column {
         MovieHeadline(
             listOf(
@@ -29,7 +29,7 @@ fun Home() {
                 Movie(""),
                 Movie(""),
                 Movie(""),
-            )
+            ), onClick = onClick
         )
     }
 }

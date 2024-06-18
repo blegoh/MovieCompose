@@ -30,9 +30,9 @@ import com.example.moviecompose.theme.MovieComposeTheme
 @Composable
 fun MovieHeadline(movies: List<Movie>) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        val pagerState = rememberPagerState()
+        val pagerState = rememberPagerState { movies.size }
 
-        HorizontalPager(movies.size, state = pagerState) { page ->
+        HorizontalPager(state = pagerState) { page ->
             MovieCard()
         }
         DotsIndicator(

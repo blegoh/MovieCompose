@@ -16,7 +16,7 @@ import com.example.moviecompose.data.Movie
 import com.example.moviecompose.theme.MovieComposeTheme
 
 @Composable
-fun PopularMovie(movies: List<Movie>) {
+fun PopularMovie(movies: List<Movie>, onClick: () -> Unit) {
     Column {
         Text(
             text = "Trending",
@@ -30,7 +30,7 @@ fun PopularMovie(movies: List<Movie>) {
             )
         ) {
             items(movies) { movie ->
-                MovieCardPortrait()
+                MovieCardPortrait(onClick = onClick)
             }
         }
         Spacer(modifier = Modifier.padding(4.dp))
@@ -47,6 +47,8 @@ fun PopularMovie() {
                 Movie(""),
                 Movie(""),
             )
-        )
+        ) {
+
+        }
     }
 }

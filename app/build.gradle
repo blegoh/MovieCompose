@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.moviecompose'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.moviecompose"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -45,6 +45,9 @@ android {
 
 dependencies {
 
+    def nav_version = "2.7.7"
+
+    implementation "androidx.navigation:navigation-compose:$nav_version"
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
