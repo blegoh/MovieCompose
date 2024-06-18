@@ -1,20 +1,28 @@
 package com.example.moviecompose.view.items
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.view.MovieGenre
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -22,16 +30,42 @@ fun MovieCardPortrait(onClick: () -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
-                .width(150.dp)
-                .height(200.dp),
-            colors = CardDefaults.cardColors(),
-            onClick = onClick
+                .width(130.dp)
+                .height(210.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            ),
+            onClick = onClick,
+            shape = RoundedCornerShape(4.dp),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 1.dp
+            )
         ) {
-            ConstraintLayout {
+            Column {
                 AsyncImage(
                     model = "https://image.tmdb.org/t/p/original/nLBRD7UPR6GjmWQp6ASAfCTaWKX.jpg",
                     contentDescription = null,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .height(140.dp)
+                        .padding(horizontal = 4.dp)
+                        .padding(top = 4.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(2.dp))
+                )
+                Text(
+                    text = "Avatar: The Last Airbender",
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .padding(top = 4.dp),
+                    maxLines = 2,
+                    lineHeight = 13.sp,
+                    fontSize = 14.sp,
+                    overflow = TextOverflow.Ellipsis
+                )
+                MovieGenre(
+                    genres = listOf("Action", "Comedy"),
+                    modifier = Modifier.padding(start = 4.dp, top = 4.dp)
                 )
             }
         }

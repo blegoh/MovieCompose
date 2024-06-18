@@ -27,7 +27,7 @@ import com.example.moviecompose.R
 import com.example.moviecompose.data.Movie
 
 enum class MovieScreen(val title: String) {
-    Home("home"), Detail("detail"), Watchlist("watchlist")
+    Home("Home"), Detail("Detail"), Watchlist("Watchlist")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,7 +52,11 @@ fun MovieApp(
     }
 
     Scaffold(
-        topBar = {},
+        topBar = {
+            MovieAppBar(
+                currentScreen = currentScreen
+            )
+        },
         bottomBar = {
             val items = listOf(R.drawable.home, R.drawable.watchlist, R.drawable.download)
             var selectedItem by remember { mutableIntStateOf(0) }
@@ -97,6 +101,14 @@ fun MovieApp(
             composable(route = MovieScreen.Watchlist.name) {
                 Watchlist(
                     listOf(
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
+                        Movie(""),
                         Movie(""),
                         Movie(""),
                         Movie(""),

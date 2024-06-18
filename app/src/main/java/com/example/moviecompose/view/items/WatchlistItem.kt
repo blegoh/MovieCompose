@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,6 +54,8 @@ fun WatchlistItem(onClick: () -> Unit) {
                 text = "Rurouni Kenshin : The Final",
                 color = Gray2,
                 fontSize = 12.sp,
+                lineHeight = 16.sp,
+                fontWeight = FontWeight.SemiBold
             )
             MovieGenre(genres = listOf("Action", "Comedy"), modifier = Modifier.padding(top = 8.dp))
             Text(
