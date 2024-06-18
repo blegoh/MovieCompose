@@ -1,6 +1,7 @@
 package com.example.moviecompose.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,9 +17,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,15 +31,12 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.example.moviecompose.R
 import com.example.moviecompose.theme.Blue1
-import com.example.moviecompose.theme.GenreBg
-import com.example.moviecompose.theme.GenreText
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieDetail() {
+fun MovieDetail(onBack: () -> Unit) {
     Column {
         AsyncImage(
             model = "https://image.tmdb.org/t/p/original/nLBRD7UPR6GjmWQp6ASAfCTaWKX.jpg",
@@ -136,12 +131,21 @@ fun MovieDetail() {
             )
         }
     }
+    Image(
+        painter = painterResource(id = R.drawable.back),
+        contentDescription = "",
+        modifier = Modifier
+            .padding(16.dp)
+            .clickable {
+                onBack()
+            },
+    )
 }
 
 @Preview
 @Composable
 fun PreviewMovieDetail() {
     MovieComposeTheme(darkTheme = false) {
-        MovieDetail()
+        MovieDetail {}
     }
 }

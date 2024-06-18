@@ -96,7 +96,9 @@ fun MovieApp(
                 })
             }
             composable(route = MovieScreen.Detail.name) {
-                MovieDetail()
+                MovieDetail {
+                    navController.popBackStack()
+                }
             }
             composable(route = MovieScreen.Watchlist.name) {
                 Watchlist(
