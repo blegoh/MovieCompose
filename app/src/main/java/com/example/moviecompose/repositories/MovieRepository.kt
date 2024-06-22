@@ -8,4 +8,6 @@ class MovieRepository @Inject constructor(
 ) {
 
     suspend fun getPopularMovie() = remote.popularMovie()
+
+    suspend fun getMovieDetail(id: Int) = remote.detailMovie(id)
 }

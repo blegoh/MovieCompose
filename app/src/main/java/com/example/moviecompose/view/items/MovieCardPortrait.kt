@@ -1,6 +1,5 @@
 package com.example.moviecompose.view.items
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,8 +24,7 @@ import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.MovieGenre
 
 @Composable
-fun MovieCardPortrait(movie: MovieSeries, onClick: () -> Unit) {
-    Log.d("cek123","https://image.tmdb.org/t/p/w500/${movie.posterPath}")
+fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int) -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
@@ -36,7 +33,9 @@ fun MovieCardPortrait(movie: MovieSeries, onClick: () -> Unit) {
             colors = CardDefaults.cardColors(
                 containerColor = Color.White
             ),
-            onClick = onClick,
+            onClick = {
+                onClick(movie.id ?: 0)
+            },
             shape = RoundedCornerShape(4.dp),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 1.dp

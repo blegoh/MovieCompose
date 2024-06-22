@@ -13,23 +13,23 @@ import com.example.moviecompose.viewmodels.HomeViewModel
 
 
 @Composable
-fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: () -> Unit) {
+fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: (id: Int) -> Unit) {
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState())
+        modifier = Modifier.verticalScroll(rememberScrollState()),
     ) {
         MovieHeadline(
             listOf(
                 Movie(""),
                 Movie(""),
                 Movie(""),
-            ), onClick
+            ), { }
         )
         ContinueWatching(
             listOf(
                 Movie(""),
                 Movie(""),
                 Movie(""),
-            ), onClick
+            ), { }
         )
         HorizontalPortraitMovies(
             "Popular Movie", viewModel.movies.value, onClick = onClick
@@ -42,7 +42,7 @@ fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: () -> Unit) {
                 MovieSeries(""),
                 MovieSeries(""),
                 MovieSeries(""),
-            ), onClick = onClick
+            ), onClick = { }
         )
         HorizontalPortraitMovies(
             "Matched To You", listOf(
@@ -52,7 +52,7 @@ fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: () -> Unit) {
                 MovieSeries(""),
                 MovieSeries(""),
                 MovieSeries(""),
-            ), onClick = onClick
+            ), onClick = { }
         )
     }
 

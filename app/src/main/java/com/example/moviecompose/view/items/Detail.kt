@@ -1,4 +1,4 @@
-package com.example.moviecompose.view
+package com.example.moviecompose.view.items
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -20,6 +20,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -30,23 +31,25 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.example.moviecompose.R
+import com.example.moviecompose.repositories.data.MovieDetail
 import com.example.moviecompose.theme.Blue1
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.view.MovieGenre
 
 @Composable
-fun MovieDetail(onBack: () -> Unit) {
+fun Detail(movieDetail: MovieDetail, onBack: () -> Unit) {
     Column {
         AsyncImage(
-            model = "https://image.tmdb.org/t/p/original/nLBRD7UPR6GjmWQp6ASAfCTaWKX.jpg",
+            model = "https://image.tmdb.org/t/p/w500/${movieDetail.backdropPath}",
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(1.778f)
         )
         Text(
-            text = "John Wick: Chapter 4", style = TextStyle(
+            text = movieDetail.title.toString(), style = TextStyle(
                 fontSize = 24.sp, lineHeight = 28.sp
             ), color = Gray2, modifier = Modifier
                 .padding(horizontal = 16.dp)
@@ -77,7 +80,7 @@ fun MovieDetail(onBack: () -> Unit) {
         }
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            text = movieDetail.overview ?: "",
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         MovieGenre(
@@ -146,6 +149,6 @@ fun MovieDetail(onBack: () -> Unit) {
 @Composable
 fun PreviewMovieDetail() {
     MovieComposeTheme(darkTheme = false) {
-        MovieDetail {}
+        Detail(MovieDetail()) {}
     }
 }
