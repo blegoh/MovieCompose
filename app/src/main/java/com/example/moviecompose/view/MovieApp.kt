@@ -28,7 +28,7 @@ import com.example.moviecompose.R
 import com.example.moviecompose.data.Movie
 
 enum class MovieScreen(val title: String) {
-    Home("Home"), Detail("Detail"), Watchlist("Watchlist")
+    Home("Home"), Detail("Detail"), Watchlist("Watchlist"), Download("Download")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,6 +83,7 @@ fun MovieApp(
                         when (selectedItem) {
                             0 -> navController.navigate(MovieScreen.Home.name)
                             1 -> navController.navigate(MovieScreen.Watchlist.name)
+                            2 -> navController.navigate(MovieScreen.Download.name)
                             else -> navController.navigate(MovieScreen.Home.name)
                         }
                     })
@@ -107,6 +108,23 @@ fun MovieApp(
             }
             composable(route = MovieScreen.Watchlist.name) {
                 Watchlist(listOf(
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                ), onClick = {
+                    navController.navigate(MovieScreen.Detail.name)
+                })
+            }
+            composable(route = MovieScreen.Download.name) {
+                Download(listOf(
                     Movie(""),
                     Movie(""),
                     Movie(""),
