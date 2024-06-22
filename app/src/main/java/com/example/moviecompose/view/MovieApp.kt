@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -51,40 +52,44 @@ fun MovieApp(
         }
     }
 
-    Scaffold(
-        topBar = {
-            MovieAppBar(
-                currentScreen = currentScreen
-            )
-        },
-        bottomBar = {
-            val items = listOf(R.drawable.home, R.drawable.watchlist, R.drawable.download)
-            var selectedItem by remember { mutableIntStateOf(0) }
-            if (topBarVisible.value) {
-                NavigationBar(
-                    modifier = Modifier.height(60.dp),
-                    containerColor = Color.White
-                ) {
-                    items.forEachIndexed { index, item ->
-                        NavigationBarItem(
-                            icon = {
-                                Image(painter = painterResource(item), contentDescription = "")
-                            },
-                            selected = selectedItem == index,
-                            onClick = {
-                                selectedItem = index
-                                when (selectedItem) {
-                                    0 -> navController.navigate(MovieScreen.Home.name)
-                                    1 -> navController.navigate(MovieScreen.Watchlist.name)
-                                    else -> navController.navigate(MovieScreen.Home.name)
-                                }
-                            }
+    Scaffold(topBar = {
+        MovieAppBar(
+            currentScreen = currentScreen
+        )
+    }, bottomBar = {
+        val items = listOf(
+            Pair(R.drawable.home, R.drawable.home_filled),
+            Pair(R.drawable.watchlist, R.drawable.watchlist_filled),
+            Pair(R.drawable.download, R.drawable.download_filled),
+        )
+        var selectedItem by remember { mutableIntStateOf(0) }
+        if (topBarVisible.value) {
+            NavigationBar(
+                modifier = Modifier.height(60.dp), containerColor = Color.White
+            ) {
+                items.forEachIndexed { index, item ->
+                    NavigationBarItem(icon = {
+                        Image(
+                            painter = if (selectedItem == index)
+                                painterResource(item.second)
+                            else
+                                painterResource(item.first),
+                            contentDescription = ""
                         )
-                    }
+                    }, colors = NavigationBarItemDefaults.colors(
+                        indicatorColor = Color.White,
+                    ), selected = selectedItem == index, onClick = {
+                        selectedItem = index
+                        when (selectedItem) {
+                            0 -> navController.navigate(MovieScreen.Home.name)
+                            1 -> navController.navigate(MovieScreen.Watchlist.name)
+                            else -> navController.navigate(MovieScreen.Home.name)
+                        }
+                    })
                 }
             }
         }
-    ) { paddingValues ->
+    }) { paddingValues ->
         NavHost(
             navController = navController,
             startDestination = MovieScreen.Home.title,
@@ -101,24 +106,21 @@ fun MovieApp(
                 }
             }
             composable(route = MovieScreen.Watchlist.name) {
-                Watchlist(
-                    listOf(
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                        Movie(""),
-                    ),
-                    onClick = {
-                        navController.navigate(MovieScreen.Detail.name)
-                    }
-                )
+                Watchlist(listOf(
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                    Movie(""),
+                ), onClick = {
+                    navController.navigate(MovieScreen.Detail.name)
+                })
             }
         }
     }
