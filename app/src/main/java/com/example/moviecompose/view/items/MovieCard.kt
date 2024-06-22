@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,23 +24,28 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.example.moviecompose.theme.MovieComposeTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieCard() {
+fun MovieCard(onClick: () -> Unit) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
         val (card) = createRefs()
-        Card(modifier = Modifier
-            .aspectRatio(1.7778f)
-            .width(0.dp)
-            .constrainAs(card) {
-                top.linkTo(parent.top)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            }
-            .padding(16.dp), colors = CardDefaults.cardColors()) {
+        Card(
+            modifier = Modifier
+                .aspectRatio(1.7778f)
+                .width(0.dp)
+                .constrainAs(card) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+                .padding(16.dp),
+            colors = CardDefaults.cardColors(),
+            onClick = onClick
+        ) {
             ConstraintLayout {
                 val (content, surface) = createRefs()
                 AsyncImage(
@@ -87,6 +93,6 @@ fun MovieCard() {
 @Composable
 fun PreviewMovieCard() {
     MovieComposeTheme() {
-        MovieCard()
+        MovieCard {}
     }
 }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,14 +19,16 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.example.moviecompose.theme.MovieComposeTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieCardLandscape() {
+fun MovieCardLandscape(onClick: () -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
                 .width(240.dp)
                 .height(135.dp),
-            colors = CardDefaults.cardColors()
+            colors = CardDefaults.cardColors(),
+            onClick = onClick
         ) {
             ConstraintLayout {
                 AsyncImage(
@@ -49,6 +52,6 @@ fun MovieCardLandscape() {
 @Composable
 fun PreviewMovieCardLandscape() {
     MovieComposeTheme() {
-        MovieCardLandscape()
+        MovieCardLandscape {}
     }
 }

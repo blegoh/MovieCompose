@@ -26,12 +26,12 @@ import com.example.moviecompose.view.items.MovieCard
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MovieHeadline(movies: List<Movie>) {
+fun MovieHeadline(movies: List<Movie>, onClick: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         val pagerState = rememberPagerState { movies.size }
 
         HorizontalPager(state = pagerState) { page ->
-            MovieCard()
+            MovieCard(onClick)
         }
         DotsIndicator(
             totalDots = 3,
@@ -91,6 +91,6 @@ fun PreviewMovieHeadline() {
                 Movie(""),
                 Movie(""),
             )
-        )
+        ) {}
     }
 }

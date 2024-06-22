@@ -17,7 +17,7 @@ import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.items.MovieCardLandscape
 
 @Composable
-fun ContinueWatching(movies: List<Movie>) {
+fun ContinueWatching(movies: List<Movie>, onClick: () -> Unit) {
     Column {
         Text(
             text = "Continue Watching",
@@ -31,7 +31,7 @@ fun ContinueWatching(movies: List<Movie>) {
             )
         ) {
             items(movies) { movie ->
-                MovieCardLandscape()
+                MovieCardLandscape(onClick)
             }
         }
         Spacer(modifier = Modifier.padding(4.dp))
@@ -48,6 +48,6 @@ fun ContinueWatching() {
                 Movie(""),
                 Movie(""),
             )
-        )
+        ) {}
     }
 }

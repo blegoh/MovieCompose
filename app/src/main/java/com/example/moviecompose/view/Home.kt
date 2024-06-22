@@ -18,14 +18,14 @@ fun Home(onClick: () -> Unit) {
                 Movie(""),
                 Movie(""),
                 Movie(""),
-            )
+            ), onClick
         )
         ContinueWatching(
             listOf(
                 Movie(""),
                 Movie(""),
                 Movie(""),
-            )
+            ), onClick
         )
         HorizontalPortraitMovies(
             "Popular Movie",
