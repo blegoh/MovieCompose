@@ -1,5 +1,6 @@
 package com.example.moviecompose.view.items
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,12 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.MovieGenre
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieCardPortrait(onClick: () -> Unit) {
+fun MovieCardPortrait(movie: MovieSeries, onClick: () -> Unit) {
+    Log.d("cek123","https://image.tmdb.org/t/p/w500/${movie.posterPath}")
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
@@ -42,7 +44,7 @@ fun MovieCardPortrait(onClick: () -> Unit) {
         ) {
             Column {
                 AsyncImage(
-                    model = "https://image.tmdb.org/t/p/original/nLBRD7UPR6GjmWQp6ASAfCTaWKX.jpg",
+                    model = "https://image.tmdb.org/t/p/w500/${movie.posterPath}",
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -53,7 +55,7 @@ fun MovieCardPortrait(onClick: () -> Unit) {
                         .clip(RoundedCornerShape(2.dp))
                 )
                 Text(
-                    text = "Avatar: The Last Airbender",
+                    text = movie.title.toString(),
                     modifier = Modifier
                         .padding(horizontal = 4.dp)
                         .padding(top = 4.dp),
@@ -75,6 +77,6 @@ fun MovieCardPortrait(onClick: () -> Unit) {
 @Composable
 fun PreviewMovieCardPortrait() {
     MovieComposeTheme() {
-        MovieCardPortrait(onClick = {})
+        MovieCardPortrait(MovieSeries(), onClick = {})
     }
 }

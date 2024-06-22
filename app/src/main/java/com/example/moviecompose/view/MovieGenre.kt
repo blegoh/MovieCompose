@@ -2,8 +2,7 @@ package com.example.moviecompose.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,7 +25,6 @@ import com.example.moviecompose.theme.GenreBg
 import com.example.moviecompose.theme.GenreText
 import com.example.moviecompose.theme.MovieComposeTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieGenre(genres: List<String>, modifier: Modifier = Modifier) {
     LazyRow(
@@ -38,12 +37,13 @@ fun MovieGenre(genres: List<String>, modifier: Modifier = Modifier) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(12.dp)
+                    .height(16.dp)
             ) {
                 FilterChip(onClick = {}, label = {
                     Text(
                         text = genre,
-                        fontSize = 8.sp
+                        fontSize = 8.sp,
+                        textAlign = TextAlign.Center,
                     )
                 }, leadingIcon = null, selected = true,
                     colors = FilterChipDefaults.filterChipColors(
@@ -51,7 +51,7 @@ fun MovieGenre(genres: List<String>, modifier: Modifier = Modifier) {
                         selectedLabelColor = GenreText
                     ),
                     shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.height(12.dp)
+                    modifier = Modifier.fillMaxHeight()
                 )
             }
         }
@@ -62,6 +62,6 @@ fun MovieGenre(genres: List<String>, modifier: Modifier = Modifier) {
 @Composable
 fun PreviewMovieGenre() {
     MovieComposeTheme(darkTheme = false) {
-        MovieGenre(listOf("Action", "Comedy", "Adventure"),Modifier.padding(0.dp))
+        MovieGenre(listOf("Action", "Comedy", "Adventure"), Modifier.padding(0.dp))
     }
 }

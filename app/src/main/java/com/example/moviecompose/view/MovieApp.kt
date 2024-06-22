@@ -25,7 +25,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.moviecompose.R
-import com.example.moviecompose.data.Movie
+import com.example.moviecompose.repositories.data.Movie
+import com.example.moviecompose.viewmodels.HomeViewModel
 
 enum class MovieScreen(val title: String) {
     Home("Home"), Detail("Detail"), Watchlist("Watchlist"), Download("Download")
@@ -34,6 +35,7 @@ enum class MovieScreen(val title: String) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieApp(
+    viewModel: HomeViewModel,
     navController: NavHostController = rememberNavController()
 ) {
     val topBarVisible = remember { mutableStateOf(true) }
@@ -97,7 +99,7 @@ fun MovieApp(
             modifier = Modifier.padding(paddingValues)
         ) {
             composable(route = MovieScreen.Home.name) {
-                Home(onClick = {
+                Home(viewModel, onClick = {
                     navController.navigate(MovieScreen.Detail.name)
                 })
             }

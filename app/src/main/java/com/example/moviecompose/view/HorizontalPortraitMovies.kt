@@ -13,13 +13,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.moviecompose.data.Movie
+import com.example.moviecompose.repositories.data.Movie
+import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.items.MovieCardPortrait
 
 @Composable
-fun HorizontalPortraitMovies(title: String, movies: List<Movie>, onClick: () -> Unit) {
+fun HorizontalPortraitMovies(title: String, movies: List<MovieSeries>, onClick: () -> Unit) {
     Column {
         Text(
             text = title,
@@ -36,7 +37,7 @@ fun HorizontalPortraitMovies(title: String, movies: List<Movie>, onClick: () -> 
             )
         ) {
             items(movies) { movie ->
-                MovieCardPortrait(onClick = onClick)
+                MovieCardPortrait(movie, onClick = onClick)
             }
         }
         Spacer(modifier = Modifier.padding(4.dp))
@@ -50,9 +51,9 @@ fun PopularMovie() {
         HorizontalPortraitMovies(
             "Trending",
             listOf(
-                Movie(""),
-                Movie(""),
-                Movie(""),
+                MovieSeries(""),
+                MovieSeries(""),
+                MovieSeries(""),
             )
         ) {
 
