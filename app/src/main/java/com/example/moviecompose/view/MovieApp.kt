@@ -32,10 +32,8 @@ enum class MovieScreen(val title: String) {
     Home("Home"), Detail("Detail"), Watchlist("Watchlist"), Download("Download")
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieApp(
-    viewModel: HomeViewModel,
     navController: NavHostController = rememberNavController()
 ) {
     val topBarVisible = remember { mutableStateOf(true) }
@@ -99,7 +97,7 @@ fun MovieApp(
             modifier = Modifier.padding(paddingValues)
         ) {
             composable(route = MovieScreen.Home.name) {
-                Home(viewModel, onClick = {
+                Home(onClick = {
                     navController.navigate(MovieScreen.Detail.name)
                 })
             }
