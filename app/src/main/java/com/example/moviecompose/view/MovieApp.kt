@@ -1,5 +1,6 @@
 package com.example.moviecompose.view
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -25,12 +26,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.moviecompose.R
 import com.example.moviecompose.repositories.data.Movie
+import com.example.moviecompose.repositories.data.MovieSeries
 
 enum class MovieScreen(val title: String, val route: String) {
-    Home("Home", "home"), Detail("Detail", "detail/{id}"), Watchlist(
-        "Watchlist",
-        "watchlist"
-    ),
+    Home("Home", "home"),
+    Detail("Detail", "detail/{id}"),
+    Watchlist("Watchlist", "watchlist"),
     Download("Download", "download")
 }
 
@@ -40,6 +41,7 @@ fun MovieApp(
 ) {
     val topBarVisible = remember { mutableStateOf(true) }
     val backStackEntry by navController.currentBackStackEntryAsState()
+    Log.d("cek123", backStackEntry?.destination?.route.toString())
     val currentScreen = when (backStackEntry?.destination?.route) {
         MovieScreen.Home.route -> MovieScreen.Home
         MovieScreen.Watchlist.route -> MovieScreen.Watchlist
@@ -50,8 +52,9 @@ fun MovieApp(
     LaunchedEffect(navController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             topBarVisible.value = when (destination.route) {
-                MovieScreen.Home.name -> true
-                MovieScreen.Watchlist.name -> true
+                MovieScreen.Home.route -> true
+                MovieScreen.Watchlist.route -> true
+                MovieScreen.Download.route -> true
                 else -> false
             }
         }
@@ -101,48 +104,28 @@ fun MovieApp(
             startDestination = MovieScreen.Home.title,
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable(route = MovieScreen.Home.name) {
+            composable(route = MovieScreen.Home.route) {
                 Home(onClick = { id ->
                     navController.navigate(MovieScreen.Detail.route.replace("{id}", id.toString()))
                 })
             }
             composable(route = MovieScreen.Detail.route) {
-                val id = backStackEntry?.arguments?.getString("id","0") ?: "0"
+                val id = backStackEntry?.arguments?.getString("id", "0") ?: "0"
 
                 DetailScreen(id.toInt()) {
                     navController.popBackStack()
                 }
             }
-            composable(route = MovieScreen.Watchlist.name) {
+            composable(route = MovieScreen.Watchlist.route) {
                 Watchlist(listOf(
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
+                    MovieSeries(1, "", "", 1)
                 ), onClick = {
 //                    navController.navigate(MovieScreen.Detail.name)
                 })
             }
-            composable(route = MovieScreen.Download.name) {
+            composable(route = MovieScreen.Download.route) {
                 Download(listOf(
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
-                    Movie(""),
+                    MovieSeries(1, "", "", 1)
                 ), onClick = {
 //                    navController.navigate(MovieScreen.Detail.name)
                 })

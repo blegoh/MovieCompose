@@ -51,9 +51,7 @@ fun PopularMovie() {
         HorizontalPortraitMovies(
             "Trending",
             listOf(
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
+                MovieSeries(1, "", "", 1)
             )
         ) {
 

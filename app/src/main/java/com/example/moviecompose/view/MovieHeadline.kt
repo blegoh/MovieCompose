@@ -21,12 +21,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.moviecompose.repositories.data.Movie
+import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.items.MovieCard
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MovieHeadline(movies: List<Movie>, onClick: () -> Unit) {
+fun MovieHeadline(movies: List<MovieSeries>, onClick: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         val pagerState = rememberPagerState { movies.size }
 
@@ -87,9 +88,7 @@ fun PreviewMovieHeadline() {
     MovieComposeTheme() {
         MovieHeadline(
             listOf(
-                Movie(""),
-                Movie(""),
-                Movie(""),
+                MovieSeries(1, "", "", 1)
             )
         ) {}
     }

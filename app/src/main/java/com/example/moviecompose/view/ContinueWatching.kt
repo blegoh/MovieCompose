@@ -13,11 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.moviecompose.repositories.data.Movie
+import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.items.MovieCardLandscape
 
 @Composable
-fun ContinueWatching(movies: List<Movie>, onClick: () -> Unit) {
+fun ContinueWatching(movies: List<MovieSeries>, onClick: () -> Unit) {
     Column {
         Text(
             text = "Continue Watching",
@@ -44,9 +45,7 @@ fun ContinueWatching() {
     MovieComposeTheme() {
         ContinueWatching(
             listOf(
-                Movie(""),
-                Movie(""),
-                Movie(""),
+                MovieSeries(1, "", "", 1),
             )
         ) {}
     }

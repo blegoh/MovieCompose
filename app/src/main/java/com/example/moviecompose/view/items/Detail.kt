@@ -56,8 +56,8 @@ fun Detail(movieDetail: MovieDetail, onBack: () -> Unit) {
                 .padding(top = 16.dp)
         )
         Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-            Text(text = "2024", color = Gray3)
-            Text(text = "1 hr 34m", color = Gray3)
+            Text(text = movieDetail.releaseDate?.split("-")?.firstOrNull() ?: "", color = Gray3)
+            Text(text = "1 hr 34m", color = Gray3, modifier = Modifier.padding(start = 16.dp))
         }
         Spacer(modifier = Modifier.height(16.dp))
         Button(

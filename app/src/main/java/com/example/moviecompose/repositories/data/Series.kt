@@ -5,7 +5,10 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Movie(
+data class Series(
+
+    @field:Json(name = "first_air_date")
+    val firstAirDate: String? = null,
 
     @field:Json(name = "overview")
     val overview: String? = null,
@@ -13,32 +16,29 @@ data class Movie(
     @field:Json(name = "original_language")
     val originalLanguage: String? = null,
 
-    @field:Json(name = "original_title")
-    val originalTitle: String? = null,
-
-    @field:Json(name = "video")
-    val video: Boolean? = null,
-
-    @field:Json(name = "title")
-    val title: String? = null,
-
     @field:Json(name = "genre_ids")
     val genreIds: List<Int?>? = null,
 
     @field:Json(name = "poster_path")
     val posterPath: String? = null,
 
+    @field:Json(name = "origin_country")
+    val originCountry: List<String>? = null,
+
     @field:Json(name = "backdrop_path")
     val backdropPath: String? = null,
 
-    @field:Json(name = "release_date")
-    val releaseDate: String? = null,
+    @field:Json(name = "original_name")
+    val originalName: String? = null,
 
     @field:Json(name = "popularity")
     val popularity: Double? = null,
 
     @field:Json(name = "vote_average")
     val voteAverage: Double? = null,
+
+    @field:Json(name = "name")
+    val name: String? = null,
 
     @field:Json(name = "id")
     val id: Int,
@@ -51,7 +51,7 @@ data class Movie(
 ) : Parcelable {
     fun toMovieSeries(): MovieSeries {
         return MovieSeries(
-            id, title.toString(), posterPath.toString(), 1
+            id, name.toString(), posterPath.toString(), 2
         )
     }
 }

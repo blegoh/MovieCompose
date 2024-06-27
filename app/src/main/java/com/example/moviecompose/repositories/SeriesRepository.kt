@@ -5,11 +5,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MovieRepository @Inject constructor(
+class SeriesRepository @Inject constructor(
     private val remote: ApiService
 ) {
 
-    suspend fun getPopularMovie() = remote.popularMovie()
-
-    suspend fun getMovieDetail(id: Int) = remote.detailMovie(id)
+    suspend fun getPopularSeries() = remote.popularSeries()
 }

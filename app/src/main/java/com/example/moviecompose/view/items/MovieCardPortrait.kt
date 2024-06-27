@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.moviecompose.repositories.data.Movie
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.MovieGenre
@@ -43,7 +44,7 @@ fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int) -> Unit) {
         ) {
             Column {
                 AsyncImage(
-                    model = "https://image.tmdb.org/t/p/w500/${movie.posterPath}",
+                    model = "https://image.tmdb.org/t/p/w500/${movie.poster}",
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -76,6 +77,6 @@ fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int) -> Unit) {
 @Composable
 fun PreviewMovieCardPortrait() {
     MovieComposeTheme() {
-        MovieCardPortrait(MovieSeries(), onClick = {})
+        MovieCardPortrait(MovieSeries(1, "", "", 1), onClick = {})
     }
 }

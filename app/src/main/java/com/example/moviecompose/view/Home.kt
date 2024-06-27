@@ -19,45 +19,30 @@ fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: (id: Int) -> Unit)
     ) {
         MovieHeadline(
             listOf(
-                Movie(""),
-                Movie(""),
-                Movie(""),
+                MovieSeries(1, "", "", 1)
             ), { }
         )
         ContinueWatching(
             listOf(
-                Movie(""),
-                Movie(""),
-                Movie(""),
+                MovieSeries(1, "", "", 1)
             ), { }
         )
         HorizontalPortraitMovies(
             "Popular Movie", viewModel.movies.value, onClick = onClick
         )
         HorizontalPortraitMovies(
-            "Popular Series", listOf(
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-            ), onClick = { }
+            "Popular Series", viewModel.series.value, onClick = { }
         )
         HorizontalPortraitMovies(
             "Matched To You", listOf(
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
-                MovieSeries(""),
+                MovieSeries(1, "Avatar", "", 1),
             ), onClick = { }
         )
     }
 
     DisposableEffect(Unit) {
         viewModel.getMovies()
+        viewModel.getSeries()
         onDispose {}
     }
 }
