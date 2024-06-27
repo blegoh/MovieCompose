@@ -1,7 +1,7 @@
 package com.example.moviecompose.viewmodels
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviecompose.repositories.MovieRepository
@@ -15,10 +15,11 @@ class DetailViewModel @Inject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
-    val movie: MutableState<MovieDetail?> = mutableStateOf(null)
+    private val _movie: MutableLiveData<MovieDetail> = MutableLiveData()
+    val movie: LiveData<MovieDetail> = _movie
     fun getMovie(id: Int) = viewModelScope.launch {
         try {
-            movie.value = movieRepository.getMovieDetail(id)
+            _movie.value = movieRepository.getMovieDetail(id)
         } catch (e: Exception) {
             // Handle errors here
         }

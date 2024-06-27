@@ -1,22 +1,21 @@
 package com.example.moviecompose.view
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.moviecompose.repositories.data.MovieDetail
-import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.items.Detail
 import com.example.moviecompose.viewmodels.DetailViewModel
 
 @Composable
 fun DetailScreen(id: Int, viewModel: DetailViewModel = hiltViewModel(), onBack: () -> Unit) {
-    viewModel.movie.value?.let {
+    val movie by viewModel.movie.observeAsState()
+    movie?.let {
         Detail(movieDetail = it, onBack = onBack)
     }
 
-    DisposableEffect(Unit) {
+    LaunchedEffect(Unit) {
         viewModel.getMovie(id)
-        onDispose {}
     }
 }
