@@ -10,4 +10,6 @@ class SeriesRepository @Inject constructor(
 ) {
 
     suspend fun getPopularSeries() = remote.popularSeries()
+
+    suspend fun getSeriesDetail(id: Int) = remote.detailSeries(id)
 }

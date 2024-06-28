@@ -20,17 +20,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.moviecompose.R
-import com.example.moviecompose.repositories.data.Movie
 import com.example.moviecompose.repositories.data.MovieSeries
 
 enum class MovieScreen(val title: String, val route: String) {
     Home("Home", "home"),
-    Detail("Detail", "detail/{id}"),
+    Detail("Detail", "detail/{id}/{type}"),
     Watchlist("Watchlist", "watchlist"),
     Download("Download", "download")
 }
@@ -105,14 +106,24 @@ fun MovieApp(
             modifier = Modifier.padding(paddingValues)
         ) {
             composable(route = MovieScreen.Home.route) {
-                Home(onClick = { id ->
-                    navController.navigate(MovieScreen.Detail.route.replace("{id}", id.toString()))
+                Home(onClick = { id, type ->
+                    navController.navigate(
+                        MovieScreen.Detail.route.replace("{id}", id.toString())
+                            .replace("{type}", type.toString())
+                    )
                 })
             }
-            composable(route = MovieScreen.Detail.route) {
-                val id = backStackEntry?.arguments?.getString("id", "0") ?: "0"
+            composable(route = MovieScreen.Detail.route, arguments = listOf(
+                navArgument("id") {
+                    type = NavType.IntType
+                }, navArgument("type") {
+                    type = NavType.IntType
+                }
+            )) {
+                val id = backStackEntry?.arguments?.getInt("id") ?: 0
+                val type = backStackEntry?.arguments?.getInt("type") ?: 1
 
-                DetailScreen(id.toInt()) {
+                DetailScreen(id, type) {
                     navController.popBackStack()
                 }
             }

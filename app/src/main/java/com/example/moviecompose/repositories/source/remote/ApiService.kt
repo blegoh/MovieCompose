@@ -4,6 +4,7 @@ import com.example.moviecompose.repositories.data.ListResponse
 import com.example.moviecompose.repositories.data.Movie
 import com.example.moviecompose.repositories.data.MovieDetail
 import com.example.moviecompose.repositories.data.Series
+import com.example.moviecompose.repositories.data.SeriesDetail
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -19,4 +20,9 @@ interface ApiService {
     suspend fun detailMovie(
         @Path("id") id: Int
     ): MovieDetail
+
+    @GET("/3/tv/{id}")
+    suspend fun detailSeries(
+        @Path("id") id: Int
+    ): SeriesDetail
 }

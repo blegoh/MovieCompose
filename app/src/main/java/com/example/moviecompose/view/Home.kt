@@ -13,7 +13,7 @@ import com.example.moviecompose.viewmodels.HomeViewModel
 
 
 @Composable
-fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: (id: Int) -> Unit) {
+fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: (id: Int, type: Int) -> Unit) {
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState()),
     ) {
@@ -31,12 +31,12 @@ fun Home(viewModel: HomeViewModel = hiltViewModel(), onClick: (id: Int) -> Unit)
             "Popular Movie", viewModel.movies.value, onClick = onClick
         )
         HorizontalPortraitMovies(
-            "Popular Series", viewModel.series.value, onClick = { }
+            "Popular Series", viewModel.series.value, onClick = onClick
         )
         HorizontalPortraitMovies(
             "Matched To You", listOf(
                 MovieSeries(1, "Avatar", "", 1),
-            ), onClick = { }
+            ), onClick = onClick
         )
     }
 

@@ -20,7 +20,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -39,7 +38,7 @@ import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.MovieGenre
 
 @Composable
-fun Detail(movieDetail: MovieDetail, onBack: () -> Unit) {
+fun DetailMovie(movieDetail: MovieDetail, onBack: () -> Unit) {
     Column {
         AsyncImage(
             model = "https://image.tmdb.org/t/p/w500/${movieDetail.backdropPath}",
@@ -149,6 +148,6 @@ fun Detail(movieDetail: MovieDetail, onBack: () -> Unit) {
 @Composable
 fun PreviewMovieDetail() {
     MovieComposeTheme(darkTheme = false) {
-        Detail(MovieDetail()) {}
+        DetailMovie(MovieDetail()) {}
     }
 }

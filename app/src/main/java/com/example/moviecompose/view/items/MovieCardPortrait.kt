@@ -25,7 +25,7 @@ import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.MovieGenre
 
 @Composable
-fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int) -> Unit) {
+fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int, type: Int) -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
         Card(
             modifier = Modifier
@@ -35,7 +35,7 @@ fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int) -> Unit) {
                 containerColor = Color.White
             ),
             onClick = {
-                onClick(movie.id ?: 0)
+                onClick(movie.id, movie.type)
             },
             shape = RoundedCornerShape(4.dp),
             elevation = CardDefaults.cardElevation(
@@ -77,6 +77,8 @@ fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int) -> Unit) {
 @Composable
 fun PreviewMovieCardPortrait() {
     MovieComposeTheme() {
-        MovieCardPortrait(MovieSeries(1, "", "", 1), onClick = {})
+        MovieCardPortrait(MovieSeries(1, "", "", 1), onClick = { _, _ ->
+
+        })
     }
 }

@@ -20,7 +20,11 @@ import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.view.items.MovieCardPortrait
 
 @Composable
-fun HorizontalPortraitMovies(title: String, movies: List<MovieSeries>, onClick: (id: Int) -> Unit) {
+fun HorizontalPortraitMovies(
+    title: String,
+    movies: List<MovieSeries>,
+    onClick: (id: Int, type: Int) -> Unit
+) {
     Column {
         Text(
             text = title,
@@ -53,7 +57,7 @@ fun PopularMovie() {
             listOf(
                 MovieSeries(1, "", "", 1)
             )
-        ) {
+        ) { _, _ ->
 
         }
     }
