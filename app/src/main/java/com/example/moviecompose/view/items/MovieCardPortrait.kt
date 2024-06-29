@@ -19,10 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.moviecompose.repositories.data.Movie
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
-import com.example.moviecompose.view.MovieGenre
 
 @Composable
 fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int, type: Int) -> Unit) {

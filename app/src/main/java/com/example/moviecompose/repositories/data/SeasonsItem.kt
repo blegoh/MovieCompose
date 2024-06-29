@@ -23,7 +23,7 @@ data class SeasonsItem(
 	val seasonNumber: Int? = null,
 
 	@field:Json(name="id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:Json(name="poster_path")
 	val posterPath: String? = null

@@ -1,6 +1,5 @@
 package com.example.moviecompose.view.items
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,24 +15,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.moviecompose.R
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
 
 @Composable
-fun WatchlistItem(onClick: () -> Unit) {
+fun EpisodeCard(onClick: () -> Unit) {
     Row(
         modifier = Modifier
-            .height(134.dp)
+            .height(80.dp)
             .padding(horizontal = 16.dp)
-            .padding(bottom = 8.dp)
+            .padding(bottom = 16.dp)
             .clickable {
                 onClick()
             },
@@ -43,7 +40,7 @@ fun WatchlistItem(onClick: () -> Unit) {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .width(100.dp)
+                .width(130.dp)
                 .fillMaxHeight()
                 .clip(RoundedCornerShape(5.dp))
         )
@@ -60,35 +57,20 @@ fun WatchlistItem(onClick: () -> Unit) {
                 lineHeight = 16.sp,
                 fontWeight = FontWeight.SemiBold
             )
-            MovieGenre(genres = listOf("Action", "Comedy"), modifier = Modifier.padding(top = 8.dp))
             Text(
-                text = "1h 35m",
+                text = "876 MB",
                 fontSize = 10.sp,
                 color = Gray3,
                 modifier = Modifier.padding(top = 8.dp)
             )
-            Row(
-                modifier = Modifier.padding(top = 8.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.watchlist), contentDescription = "",
-                    modifier = Modifier.height(14.dp)
-                )
-                Text(
-                    text = "Remove from Watchlist",
-                    fontSize = 10.sp,
-                    color = Gray3,
-                    modifier = Modifier.padding(start = 8.dp)
-                )
-            }
         }
     }
 }
 
 @Preview()
 @Composable
-fun PreviewMovieWatchlist() {
+fun PreviewEpisode() {
     MovieComposeTheme {
-        WatchlistItem {}
+        EpisodeCard {}
     }
 }

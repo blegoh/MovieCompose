@@ -44,7 +44,7 @@ data class SeriesDetail(
 	val overview: String? = null,
 
 	@field:Json(name="seasons")
-	val seasons: List<SeasonsItem?>? = null,
+	val seasons: List<SeasonsItem>? = null,
 
 	@field:Json(name="languages")
 	val languages: List<String?>? = null,
