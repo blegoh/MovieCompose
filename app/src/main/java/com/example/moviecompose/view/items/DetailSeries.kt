@@ -22,7 +22,11 @@ import com.example.moviecompose.repositories.data.SeriesDetail
 import com.example.moviecompose.theme.MovieComposeTheme
 
 @Composable
-fun DetailSeries(seriesDetail: SeriesDetail, onBack: () -> Unit) {
+fun DetailSeries(
+    seriesDetail: SeriesDetail,
+    onSeasonClick: (season: Int) -> Unit,
+    onBack: () -> Unit
+) {
     Column {
         Header(
             cover = "https://image.tmdb.org/t/p/w500/${seriesDetail.backdropPath}",
@@ -48,6 +52,7 @@ fun DetailSeries(seriesDetail: SeriesDetail, onBack: () -> Unit) {
                     FilterChip(
                         onClick = {
                             selected = season.id
+                            onSeasonClick(season.seasonNumber)
                         },
                         label = {
                             Text(
@@ -57,10 +62,11 @@ fun DetailSeries(seriesDetail: SeriesDetail, onBack: () -> Unit) {
                             )
                         },
                         selected = selected == season.id,
-                        )
+                    )
                 }
             }
         }
+
     }
 }
 
@@ -68,6 +74,6 @@ fun DetailSeries(seriesDetail: SeriesDetail, onBack: () -> Unit) {
 @Composable
 fun PreviewSeriesDetail() {
     MovieComposeTheme(darkTheme = false) {
-        DetailSeries(SeriesDetail()) {}
+        DetailSeries(SeriesDetail(), {}) {}
     }
 }

@@ -8,8 +8,9 @@ import javax.inject.Singleton
 class SeriesRepository @Inject constructor(
     private val remote: ApiService
 ) {
-
     suspend fun getPopularSeries() = remote.popularSeries()
 
     suspend fun getSeriesDetail(id: Int) = remote.detailSeries(id)
+
+    suspend fun getSeasonDetail(idSeries: Int, season: Int) = remote.detailSeason(idSeries, season)
 }

@@ -2,7 +2,7 @@ package com.example.moviecompose.repositories.data
 
 import com.squareup.moshi.Json
 
-data class NetworksItem(
+data class Network(
 
 	@field:Json(name="logo_path")
 	val logoPath: String? = null,

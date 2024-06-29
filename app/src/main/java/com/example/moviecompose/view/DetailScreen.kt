@@ -19,7 +19,9 @@ fun DetailScreen(
         DetailMovie(movieDetail = it, onBack = onBack)
     }
     series?.let {
-        DetailSeries(seriesDetail = it, onBack = onBack)
+        DetailSeries(seriesDetail = it, onBack = onBack, onSeasonClick = { season ->
+            viewModel.getSeason(id, season)
+        })
     }
 
     LaunchedEffect(Unit) {
