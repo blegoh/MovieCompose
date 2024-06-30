@@ -1,4 +1,4 @@
-package com.example.moviecompose.view
+package com.example.moviecompose.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -20,10 +20,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.moviecompose.repositories.data.Movie
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
-import com.example.moviecompose.view.items.MovieCard
+import com.example.moviecompose.ui.component.MovieCard
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

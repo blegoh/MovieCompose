@@ -1,4 +1,4 @@
-package com.example.moviecompose.view.items
+package com.example.moviecompose.ui.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

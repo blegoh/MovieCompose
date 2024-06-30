@@ -1,4 +1,4 @@
-package com.example.moviecompose.view.items
+package com.example.moviecompose.ui.items
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,7 @@ import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
 
 @Composable
-fun EpisodeCard(onClick: () -> Unit) {
+fun DownloadItem(onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .height(80.dp)
@@ -69,8 +69,8 @@ fun EpisodeCard(onClick: () -> Unit) {
 
 @Preview()
 @Composable
-fun PreviewEpisode() {
+fun PreviewDownloadItem() {
     MovieComposeTheme {
-        EpisodeCard {}
+        DownloadItem {}
     }
 }

@@ -1,4 +1,4 @@
-package com.example.moviecompose.view
+package com.example.moviecompose.ui
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -42,7 +42,6 @@ fun MovieApp(
 ) {
     val topBarVisible = remember { mutableStateOf(true) }
     val backStackEntry by navController.currentBackStackEntryAsState()
-    Log.d("cek123", backStackEntry?.destination?.route.toString())
     val currentScreen = when (backStackEntry?.destination?.route) {
         MovieScreen.Home.route -> MovieScreen.Home
         MovieScreen.Watchlist.route -> MovieScreen.Watchlist

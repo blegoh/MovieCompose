@@ -23,7 +23,7 @@ data class SeasonDetail(
 	val id: Int,
 
 	@field:Json(name="episodes")
-	val episodes: List<Episode?>? = null,
+	val episodes: List<Episode>? = null,
 
 	@field:Json(name="poster_path")
 	val posterPath: String? = null

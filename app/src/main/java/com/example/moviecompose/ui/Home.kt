@@ -1,4 +1,4 @@
-package com.example.moviecompose.view
+package com.example.moviecompose.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.rememberScrollState
@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.moviecompose.repositories.data.Movie
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.viewmodels.HomeViewModel
 

@@ -1,4 +1,4 @@
-package com.example.moviecompose.view.items
+package com.example.moviecompose.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -32,6 +33,8 @@ import com.example.moviecompose.R
 import com.example.moviecompose.theme.Blue1
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
+import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.ui.items.MovieGenre
 
 @Composable
 fun Header(
@@ -158,4 +161,18 @@ fun Header(
         )
     }
 
+}
+
+@Preview()
+@Composable
+fun PreviewHeader() {
+    MovieComposeTheme(darkTheme = false) {
+        Header(
+            date = "12 April 2012",
+            cover = "https://collider.com/wp-content/uploads/the-avengers-movie-poster-banners-04.jpg",
+            title = "Judul Film/Series",
+            overview = "",
+            onBack = {}
+        )
+    }
 }
