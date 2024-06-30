@@ -38,7 +38,9 @@ class DetailViewModel @Inject constructor(
     fun getSeries(id: Int) = viewModelScope.launch {
         try {
             _series.value = seriesRepository.getSeriesDetail(id)
-            getSeason(id, 1)
+            _series.value?.seasons?.firstOrNull()?.let {
+                getSeason(id, it.seasonNumber)
+            }
         } catch (e: Exception) {
             // Handle errors here
         }

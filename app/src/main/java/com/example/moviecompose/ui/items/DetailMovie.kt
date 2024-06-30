@@ -16,7 +16,6 @@ fun DetailMovie(movieDetail: MovieDetail, onBack: () -> Unit) {
             title = movieDetail.title ?: "",
             date = movieDetail.releaseDate?.split("-")?.firstOrNull() ?: "",
             overview = movieDetail.overview ?: "",
-            onBack = onBack
         )
     }
 }

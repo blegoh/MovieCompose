@@ -37,7 +37,7 @@ fun EpisodeCard(
         Row(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
-                .padding(bottom = 16.dp)
+                .padding(bottom = 8.dp)
                 .fillMaxWidth()
                 .clickable {
                     onClick()
@@ -74,7 +74,12 @@ fun EpisodeCard(
         }
         Text(
             text = overview,
-            color = Gray3
+            color = Gray3,
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 16.dp)
         )
     }
 }
