@@ -5,8 +5,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.moviecompose.ui.items.DetailMovie
-import com.example.moviecompose.ui.items.DetailSeries
+import com.example.moviecompose.ui.template.DetailMovie
+import com.example.moviecompose.ui.template.DetailSeries
 import com.example.moviecompose.viewmodels.DetailViewModel
 
 @Composable

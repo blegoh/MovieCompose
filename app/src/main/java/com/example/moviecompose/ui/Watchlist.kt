@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.example.moviecompose.repositories.data.MovieSeries
-import com.example.moviecompose.ui.items.WatchlistItem
+import com.example.moviecompose.ui.template.WatchlistItem
 
 @Composable
 fun Watchlist(movies: List<MovieSeries>, onClick: () -> Unit) {

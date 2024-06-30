@@ -1,4 +1,4 @@
-package com.example.moviecompose.ui.items
+package com.example.moviecompose.ui.template
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -26,6 +26,7 @@ import com.example.moviecompose.R
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.ui.component.MovieGenre
 
 @Composable
 fun WatchlistItem(onClick: () -> Unit) {

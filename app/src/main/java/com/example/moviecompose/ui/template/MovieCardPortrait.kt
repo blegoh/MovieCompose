@@ -1,4 +1,4 @@
-package com.example.moviecompose.ui.items
+package com.example.moviecompose.ui.template
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +22,7 @@ import coil.compose.AsyncImage
 import com.example.moviecompose.extension.toImageUrl
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
+import com.example.moviecompose.ui.component.MovieGenre
 
 @Composable
 fun MovieCardPortrait(movie: MovieSeries, onClick: (id: Int, type: Int) -> Unit) {

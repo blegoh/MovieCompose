@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
-import com.example.moviecompose.ui.items.MovieCardPortrait
+import com.example.moviecompose.ui.template.MovieCardPortrait
 
 @Composable
 fun HorizontalPortraitMovies(

@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.moviecompose.repositories.data.MovieSeries
 import com.example.moviecompose.theme.MovieComposeTheme
-import com.example.moviecompose.ui.items.MovieCardLandscape
+import com.example.moviecompose.ui.template.MovieCardLandscape
 
 @Composable
 fun ContinueWatching(movies: List<MovieSeries>, onClick: () -> Unit) {

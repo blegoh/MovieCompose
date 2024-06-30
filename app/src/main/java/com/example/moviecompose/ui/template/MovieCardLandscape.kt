@@ -1,4 +1,4 @@
-package com.example.moviecompose.ui.items
+package com.example.moviecompose.ui.template
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

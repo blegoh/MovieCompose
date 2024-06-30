@@ -1,4 +1,4 @@
-package com.example.moviecompose.ui.items
+package com.example.moviecompose.ui.template
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

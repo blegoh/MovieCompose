@@ -1,7 +1,6 @@
 package com.example.moviecompose.ui.component
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -34,7 +33,6 @@ import com.example.moviecompose.theme.Blue1
 import com.example.moviecompose.theme.Gray2
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
-import com.example.moviecompose.ui.items.MovieGenre
 
 @Composable
 fun Header(
