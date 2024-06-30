@@ -21,9 +21,10 @@ import com.example.moviecompose.theme.TitleColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieAppBar(
-    currentScreen: MovieScreen
+    currentScreen: MovieScreen,
+    onSearch: () -> Unit
 ) {
-    if (currentScreen != MovieScreen.Detail) {
+    if (currentScreen != MovieScreen.Detail && currentScreen != MovieScreen.Search) {
         CenterAlignedTopAppBar(
             title = {
                 Text(
@@ -37,7 +38,7 @@ fun MovieAppBar(
             },
             actions = {
                 if (currentScreen == MovieScreen.Home) {
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = { onSearch() }) {
                         Icon(
                             imageVector = Icons.Filled.Search,
                             contentDescription = "Search"
@@ -63,6 +64,6 @@ fun MovieAppBar(
 @Composable
 fun PreviewMovieAppBar() {
     MovieComposeTheme() {
-        MovieAppBar(MovieScreen.Home)
+        MovieAppBar(MovieScreen.Home, {})
     }
 }

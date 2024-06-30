@@ -27,12 +27,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.moviecompose.R
 import com.example.moviecompose.repositories.data.MovieSeries
+import com.example.moviecompose.ui.page.SearchPage
 
 enum class MovieScreen(val title: String, val route: String) {
     Home("Home", "home"),
     Detail("Detail", "detail/{id}/{type}"),
     Watchlist("Watchlist", "watchlist"),
-    Download("Download", "download")
+    Download("Download", "download"),
+    Search("Search", "search")
 }
 
 @Composable
@@ -45,6 +47,7 @@ fun MovieApp(
         MovieScreen.Home.route -> MovieScreen.Home
         MovieScreen.Watchlist.route -> MovieScreen.Watchlist
         MovieScreen.Download.route -> MovieScreen.Download
+        MovieScreen.Search.route -> MovieScreen.Search
         else -> MovieScreen.Detail
     }
 
@@ -54,6 +57,7 @@ fun MovieApp(
                 MovieScreen.Home.route -> true
                 MovieScreen.Watchlist.route -> true
                 MovieScreen.Download.route -> true
+                MovieScreen.Search.route -> true
                 else -> false
             }
         }
@@ -61,7 +65,9 @@ fun MovieApp(
 
     Scaffold(topBar = {
         MovieAppBar(
-            currentScreen = currentScreen
+            currentScreen = currentScreen, onSearch = {
+                navController.navigate(MovieScreen.Search.name)
+            }
         )
     }, bottomBar = {
         val items = listOf(
@@ -138,6 +144,9 @@ fun MovieApp(
                 ), onClick = {
 //                    navController.navigate(MovieScreen.Detail.name)
                 })
+            }
+            composable(route = MovieScreen.Search.route) {
+                SearchPage()
             }
         }
     }
