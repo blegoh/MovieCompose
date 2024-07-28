@@ -19,7 +19,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.example.moviecompose.theme.MovieComposeTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieCardLandscape(onClick: () -> Unit) {
     Column(modifier = Modifier.padding(8.dp)) {
