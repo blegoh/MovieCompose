@@ -24,35 +24,17 @@ import androidx.compose.ui.unit.sp
 import com.example.moviecompose.theme.Gray3
 import com.example.moviecompose.theme.MovieComposeTheme
 import com.example.moviecompose.ui.component.RecentSearch
+import com.example.moviecompose.ui.component.SearchBar
 
 @Composable
 fun SearchPage() {
     var text by remember { mutableStateOf("") }
     Column(Modifier.fillMaxWidth()) {
-        OutlinedTextField(
-            value = text,
-            onValueChange = {
-                text = it
-            },
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .padding(top = 24.dp)
-                .fillMaxWidth(),
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Filled.Search, contentDescription = "clear"
-                )
-            },
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Filled.Clear, contentDescription = "clear"
-                )
-            },
-            shape = CircleShape,
-            keyboardActions = KeyboardActions {
 
-            }
-        )
+        SearchBar(searchText = text) {
+            text = it
+        }
+
         Spacer(modifier = Modifier.padding(top = 16.dp))
         Text(
             text = "Recent Searches",
